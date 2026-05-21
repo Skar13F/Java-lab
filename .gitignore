@@ -1,0 +1,19 @@
+# Maven
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Java compiled files
+*.class
+
+# JaCoCo
+jacoco.exec
+
+# Output folders
+output/
+reports/
