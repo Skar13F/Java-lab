@@ -1,2 +1,8 @@
 /home/oscar/Documentos/CAPACITACIÓN/Java-lab/src/main/java/com/javalab/dinosaurpark/Main.java
 /home/oscar/Documentos/CAPACITACIÓN/Java-lab/src/main/java/com/javalab/dinosaurpark/config/ParkConfig.java
+/home/oscar/Documentos/CAPACITACIÓN/Java-lab/src/main/java/com/javalab/dinosaurpark/model/CarnivoreDinosaur.java
+/home/oscar/Documentos/CAPACITACIÓN/Java-lab/src/main/java/com/javalab/dinosaurpark/model/Dinosaur.java
+/home/oscar/Documentos/CAPACITACIÓN/Java-lab/src/main/java/com/javalab/dinosaurpark/model/DinosaurStatus.java
+/home/oscar/Documentos/CAPACITACIÓN/Java-lab/src/main/java/com/javalab/dinosaurpark/model/HerbivoreDinosaur.java
+/home/oscar/Documentos/CAPACITACIÓN/Java-lab/src/main/java/com/javalab/dinosaurpark/model/Tourist.java
+/home/oscar/Documentos/CAPACITACIÓN/Java-lab/src/main/java/com/javalab/dinosaurpark/model/TouristStatus.java
