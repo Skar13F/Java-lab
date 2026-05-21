@@ -1,5 +1,8 @@
 package com.javalab.dinosaurpark.model;
 
+import java.util.List;
+import java.util.Optional;
+
 public class Technician extends Worker {
 
     public Technician(int id, String name, double dailySalary) {
