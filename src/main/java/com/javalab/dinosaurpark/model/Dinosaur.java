@@ -8,7 +8,11 @@ public abstract class Dinosaur {
     private DinosaurStatus status;
     private final double feedingCostPerStep;
 
-    public Dinosaur(int id, String name, String species, double feedingCostPerStep) {
+    public Dinosaur(int id,
+                    String name,
+                    String species,
+                    double feedingCostPerStep) {
+
         this.id = id;
         this.name = name;
         this.species = species;
@@ -17,19 +21,38 @@ public abstract class Dinosaur {
     }
 
     public abstract String getDiet();
+
     public abstract double getDangerLevel();
 
     public void escape() {
         this.status = DinosaurStatus.ESCAPED;
     }
 
-    public void returnToEnclosure() {
+    public void recapture() {
         this.status = DinosaurStatus.RECAPTURED;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public String getSpecies() { return species; }
-    public DinosaurStatus getStatus() { return status; }
-    public double getFeedingCostPerStep() { return feedingCostPerStep; }
+    public void returnToEnclosure() {
+        this.status = DinosaurStatus.IN_ENCLOSURE;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public DinosaurStatus getStatus() {
+        return status;
+    }
+
+    public double getFeedingCostPerStep() {
+        return feedingCostPerStep;
+    }
 }

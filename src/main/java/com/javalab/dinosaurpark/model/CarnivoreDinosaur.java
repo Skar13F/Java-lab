@@ -8,7 +8,7 @@ public class CarnivoreDinosaur extends Dinosaur {
 
     @Override
     public String getDiet() {
-        return "Carnivore";
+        return "CARNIVORE";
     }
 
     @Override
