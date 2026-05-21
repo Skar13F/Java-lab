@@ -1,7 +1,17 @@
 package com.javalab.dinosaurpark.simulation;
 
-import com.javalab.dinosaurpark.model.*;
-import com.javalab.dinosaurpark.zone.*;
+import com.javalab.dinosaurpark.model.Dinosaur;
+import com.javalab.dinosaurpark.model.DinosaurStatus;
+import com.javalab.dinosaurpark.model.Tourist;
+import com.javalab.dinosaurpark.model.TouristStatus;
+import com.javalab.dinosaurpark.model.Vehicle;
+import com.javalab.dinosaurpark.model.VehicleStatus;
+import com.javalab.dinosaurpark.model.Worker;
+import com.javalab.dinosaurpark.model.PowerPlant;
+import com.javalab.dinosaurpark.zone.ArrivalZone;
+import com.javalab.dinosaurpark.zone.BathroomZone;
+import com.javalab.dinosaurpark.zone.CentralHub;
+import com.javalab.dinosaurpark.zone.ObservationEnclosure;
 
 import java.util.ArrayList;
 import java.util.List;
