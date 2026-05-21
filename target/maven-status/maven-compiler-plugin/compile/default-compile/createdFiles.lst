@@ -1,2 +1,8 @@
+com/javalab/dinosaurpark/model/HerbivoreDinosaur.class
+com/javalab/dinosaurpark/model/Dinosaur.class
 com/javalab/dinosaurpark/config/ParkConfig.class
+com/javalab/dinosaurpark/model/DinosaurStatus.class
+com/javalab/dinosaurpark/model/Tourist.class
 com/javalab/dinosaurpark/Main.class
+com/javalab/dinosaurpark/model/TouristStatus.class
+com/javalab/dinosaurpark/model/CarnivoreDinosaur.class
