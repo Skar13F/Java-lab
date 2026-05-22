@@ -1,17 +1,8 @@
 package com.javalab.dinosaurpark.simulation;
 
-import com.javalab.dinosaurpark.model.Dinosaur;
-import com.javalab.dinosaurpark.model.DinosaurStatus;
-import com.javalab.dinosaurpark.model.Tourist;
-import com.javalab.dinosaurpark.model.TouristStatus;
-import com.javalab.dinosaurpark.model.Vehicle;
-import com.javalab.dinosaurpark.model.VehicleStatus;
-import com.javalab.dinosaurpark.model.Worker;
-import com.javalab.dinosaurpark.model.PowerPlant;
-import com.javalab.dinosaurpark.zone.ArrivalZone;
-import com.javalab.dinosaurpark.zone.BathroomZone;
-import com.javalab.dinosaurpark.zone.CentralHub;
-import com.javalab.dinosaurpark.zone.ObservationEnclosure;
+import com.javalab.dinosaurpark.model.*;
+import com.javalab.dinosaurpark.zone.*;
+import com.javalab.dinosaurpark.persistence.DatabaseService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +32,8 @@ public class ParkState {
 
     private boolean dealsHourActive;
     private double currentDiscount;
+
+    private final DatabaseService db;
 
     public ParkState(List<Tourist> tourists,
                      List<Dinosaur> dinosaurs,
@@ -75,6 +68,8 @@ public class ParkState {
 
         this.dealsHourActive = false;
         this.currentDiscount = 0.0;
+
+        this.db = null;
     }
 
     public void incrementStep() {
@@ -88,6 +83,10 @@ public class ParkState {
                 .count();
     }
 
+    public int getCurrentStep() {
+        return currentStep;
+    }
+
     public int countDinosaursInEnclosure() {
 
         return (int) dinosaurs.stream()
@@ -95,20 +94,26 @@ public class ParkState {
                 .count();
     }
 
-    public int countVehiclesInUse() {
+    public List<Tourist> getTourists() { return tourists; }
+    public List<Dinosaur> getDinosaurs() { return dinosaurs; }
+    public List<Worker> getWorkers() { return workers; }
+    public List<Vehicle> getVehicles() { return vehicles; }
 
-        return (int) vehicles.stream()
-                .filter(v -> v.getStatus() == VehicleStatus.IN_USE)
-                .count();
-    }
+    public ArrivalZone getArrivalZone() { return arrivalZone; }
+    public CentralHub getCentralHub() { return centralHub; }
+    public BathroomZone getBathroomZone() { return bathroomZone; }
+    public PowerPlant getPowerPlant() { return powerPlant; }
+    public List<ObservationEnclosure> getEnclosures() { return enclosures; }
 
-    public void addRevenue(double amount) {
-        totalRevenue += amount;
-    }
+    public Random getRng() { return rng; }
 
-    public void addExpense(double amount) {
-        totalExpenses += amount;
-    }
+    public double getTotalRevenue() { return totalRevenue; }
+    public double getTotalExpenses() { return totalExpenses; }
+
+    public void addRevenue(double amount) { totalRevenue += amount; }
+    public void addExpense(double amount) { totalExpenses += amount; }
+
+    public List<String> getActiveEventNames() { return activeEventNames; }
 
     public void addActiveEvent(String eventName) {
         activeEventNames.add(eventName);
@@ -116,62 +121,8 @@ public class ParkState {
 
     public void clearActiveEvents() {
         activeEventNames.clear();
-    }
-
-    public List<Tourist> getTourists() {
-        return tourists;
-    }
-
-    public List<Dinosaur> getDinosaurs() {
-        return dinosaurs;
-    }
-
-    public List<Worker> getWorkers() {
-        return workers;
-    }
-
-    public List<Vehicle> getVehicles() {
-        return vehicles;
-    }
-
-    public ArrivalZone getArrivalZone() {
-        return arrivalZone;
-    }
-
-    public CentralHub getCentralHub() {
-        return centralHub;
-    }
-
-    public BathroomZone getBathroomZone() {
-        return bathroomZone;
-    }
-
-    public PowerPlant getPowerPlant() {
-        return powerPlant;
-    }
-
-    public List<ObservationEnclosure> getEnclosures() {
-        return enclosures;
-    }
-
-    public Random getRng() {
-        return rng;
-    }
-
-    public List<String> getActiveEventNames() {
-        return activeEventNames;
-    }
-
-    public double getTotalRevenue() {
-        return totalRevenue;
-    }
-
-    public double getTotalExpenses() {
-        return totalExpenses;
-    }
-
-    public int getCurrentStep() {
-        return currentStep;
+        dealsHourActive = false;
+        currentDiscount = 0.0;
     }
 
     public boolean isDealsHourActive() {
@@ -188,5 +139,15 @@ public class ParkState {
 
     public void setCurrentDiscount(double currentDiscount) {
         this.currentDiscount = currentDiscount;
+    }
+
+    public int countVehiclesInUse() {
+        return (int) vehicles.stream()
+                .filter(v -> v.getStatus() == VehicleStatus.IN_USE)
+                .count();
+    }
+
+    public DatabaseService getDb() {
+        return db;
     }
 }

@@ -39,20 +39,24 @@ public class Vehicle {
     }
 
     public void markBroken() {
-
-        status = VehicleStatus.BROKEN;
-        repairCountdown = repairSteps;
+        if (status != VehicleStatus.BROKEN) {
+            status = VehicleStatus.BROKEN;
+            repairCountdown = repairSteps;
+        }
     }
 
     public void tick() {
 
         if (status == VehicleStatus.BROKEN) {
 
-            repairCountdown--;
+            if (repairCountdown > 0) {
+                repairCountdown--;
+            }
 
             if (repairCountdown <= 0) {
 
                 status = VehicleStatus.AVAILABLE;
+                repairCountdown = 0;
             }
         }
     }

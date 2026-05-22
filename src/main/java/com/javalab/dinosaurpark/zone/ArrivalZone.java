@@ -33,27 +33,28 @@ public class ArrivalZone implements ParkZone {
         this.soldTickets = new ArrayList<>();
     }
 
-    public void processBatch(int batchSize) {
+    public void processBatch(int batchSize, double discount) {
 
         int processed = 0;
 
         while (!queue.isEmpty() && processed < batchSize) {
 
             Tourist tourist = queue.poll();
-
             tourist.setStatus(TouristStatus.IN_PARK);
+
+            double finalPrice = ticketPrice * (1 - discount);
 
             Ticket ticket = new Ticket(
                     nextTicketId++,
                     tourist.getId(),
-                    ticketPrice,
+                    finalPrice,
                     "GENERAL",
                     LocalDateTime.now()
             );
 
             soldTickets.add(ticket);
 
-            tourist.spend(ticketPrice);
+            tourist.spend(finalPrice);
 
             processed++;
         }

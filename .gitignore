@@ -17,3 +17,4 @@ jacoco.exec
 # Output folders
 output/
 reports/
+data/
