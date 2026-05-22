@@ -28,12 +28,15 @@ public class CentralHub implements ParkZone {
         this.tourists = new ArrayList<>();
     }
 
-    public void visit(Tourist tourist, Random random) {
+    public void visit(Tourist tourist, Random random, double discount) {
 
         enter(tourist);
 
         if (random.nextDouble() < souvenirProbability) {
-            tourist.spend(souvenirPrice);
+
+            double finalPrice = souvenirPrice * (1 - discount);
+
+            tourist.spend(finalPrice);
         }
     }
 

@@ -34,7 +34,8 @@ public class ObservationEnclosure implements ParkZone {
     }
 
     public void visit(Tourist tourist,
-                      Random random) {
+                      Random random,
+                      double discount) {
 
         if (!hasCapacity()) {
             return;
@@ -42,7 +43,9 @@ public class ObservationEnclosure implements ParkZone {
 
         enter(tourist);
 
-        tourist.spend(entryFee);
+        double finalFee = entryFee * (1 - discount);
+
+        tourist.spend(finalFee);
 
         conductSurvey(tourist, random);
     }
