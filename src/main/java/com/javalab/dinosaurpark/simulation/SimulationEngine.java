@@ -157,6 +157,20 @@ public class SimulationEngine {
             // =====================
             // A. ARRIVALS
             // =====================
+            List<Tourist> waiting = state.getTourists()
+                    .stream()
+                    .filter(t -> t.getStatus() == TouristStatus.WAITING)
+                    .toList();
+
+            int added = 0;
+            for (Tourist tourist : waiting) {
+                if (added >= arrivalBatchSize) break;
+                if (state.getArrivalZone().hasCapacity()) {
+                    state.getArrivalZone().enter(tourist);
+                    added++;
+                }
+            }
+
             state.getArrivalZone().processBatch(arrivalBatchSize, state.getCurrentDiscount());
 
             // =====================
